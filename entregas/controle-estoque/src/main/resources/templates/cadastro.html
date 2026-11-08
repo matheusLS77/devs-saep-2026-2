@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gestão de Estoque</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/images/iconeAzul-stock.png" type="image/x-icon">
+</head>
+<body class="bg-light">
+
+<div class="container-fluid min-vh-100">
+  <div class="row min-vh-100 justify-content-center align-items-center login-page">
+
+    <div class="col-12 col-md-6 col-lg-5 col-xl-4 p-4">
+
+      <div class="d-flex justify-content-center align-items-center gap-2 mb-5">
+        <img src="/images/icone-stock.png" class="icone-logo-login" alt="Logo">
+
+        <h1 class="h2 fw-bold text-white mb-0">Gestão de Estoque</h1>
+      </div>
+
+      <div class="card w-100 border-0 outline-0 login-card">
+        <div class="card-body p-4">
+
+          <div class="d-flex justify-content-center mt-3 mb-4">
+            <div class="d-flex rounded-pill overflow-hidden">
+              <a type="button" class="btn fw-medium border-0 rounded-0 px-4" style="background-color: #0d1c3f; color: white;" href="/login">Entrar</a>
+
+              <a type="button" class="btn fw-medium border-0 rounded-0 px-4" style="background-color: white; color: #0d1c3f;" href="/cadastro">Criar conta</a>
+            </div>
+          </div>
+
+          <div class="alert alert-danger" role="alert" th:if="${erro}" th:text="${erro}">Login ou senha inválidos.</div>
+
+          <div class="alert alert-success" role="alert" th:if="${mensagem}" th:text="${mensagem}">
+            Conta criada com sucesso!
+          </div>
+
+          <form th:action="@{/cadastro}" method="post" th:object="${usuario}">
+
+            <div class="mb-3">
+              <label for="login" class="form-label">Login</label>
+
+              <div class="position-relative">
+                <img src="/images/icone-login.png" alt="Login" class="icone-input">
+                <input type="text" class="form-control ps-5" id="login" th:field="*{login}" placeholder="">
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <label for="senha" class="form-label">Senha</label>
+
+              <div class="position-relative">
+                <img src="/images/icone-senha.png" alt="Senha" class="icone-input">
+                <input type="password" class="form-control ps-5" id="senha" th:field="*{senha}" placeholder="">
+              </div>
+            </div>
+
+            <div class="text-danger small mt-1"
+                 th:if="${#fields.hasErrors('login') and !#fields.hasErrors('senha')}" th:errors="*{login}">
+            </div>
+
+            <div class="text-danger small mt-1"
+                 th:if="${#fields.hasErrors('senha') and !#fields.hasErrors('login')}" th:errors="*{senha}">
+            </div>
+
+            <div class="text-danger small mt-1"
+                 th:if="${#fields.hasErrors('login') and #fields.hasErrors('senha')}">Informe o login e a senha.
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-5 mb-3 fw-medium">Criar</button>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</body>
