@@ -1,8 +1,11 @@
 # Aula 10 — Fundamentos de Teste de Software e Casos de Teste
 
 **Módulo:** 5. Qualidade e Infraestrutura
+
 **Carga horária:** 4h
+
 **Professor(a):** Karize Viecelli — [@karizeviecelli]
+
 **Entrega do dia:** Entrega 8 — Descritivo de Casos de Teste de Software 🏁 *(checkpoint)*
 
 ---
